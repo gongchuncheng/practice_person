@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>news</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/news.css">
+</head>
+<body>
+	<div id="nav">
+		<div>
+			<a href="news.html" class="selected">全部</a>
+			<a href="#">A组</a>
+			<a href="#">B组</a>
+			<a href="#">C组</a>
+			<a href="#">D组</a>
+		</div>
+		<div>
+			<a href="#">E组</a>
+			<a href="#">F组</a>
+			<a href="#">G组</a>
+			<a href="#">H组</a>
+			<a href="#">赛场</a>
+		</div>
+	</div>
+	<div id="container"></div>
+	<script id="myNew" type="text/template">
+		<a href="#">
+			<div class=img-con>
+				<img src="<%= img_src%>" alt="">
+			</div>
+			<div class="info">
+				<h3 class="title"><%= title%></h3>
+				<p class="content"><%= content%></p>
+			</div>
+			<p class="comment">
+				<span class="comment-num"><%= comment%></span>
+			</p>
+		</a>
+	</script>
+	<script src="js/require.js" data-main="js/news.js"></script>
+</body>
+</html>

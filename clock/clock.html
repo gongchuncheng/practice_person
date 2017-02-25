@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background: #000000;
+        }
+        #clock{
+            position: absolute;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: 50px;
+            background: #ffffff;
+
+        }
+    </style>
+<body>
+    <canvas id="clock" width="400" height="400"></canvas>
+    <script>
+        var cvs = document.getElementById('clock');
+        var ctx = cvs.getContext('2d');
+        function run(){
+            //每次开启时钟前清除面板
+            ctx.clearRect(0,0,400,400);
+            //画出60个刻度
+            ctx.lineWidth = 2;
+            for(var i=0; i<60; i++){
+                ctx.beginPath();
+                ctx.moveTo(200,200);
+                ctx.arc(200,200,150,i*6*Math.PI/180,(i+1)*6*Math.PI/180);
+                ctx.stroke();
+                ctx.closePath();
+            }
+            //画出一个半径140的圆覆盖
+            ctx.beginPath();
+            ctx.arc(200,200,140,0,2*Math.PI);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+            ctx.closePath();
+            //画出12个大刻度
+            for(var i=0; i<12; i++){
+                ctx.beginPath();
+                ctx.moveTo(200,200);
+                ctx.arc(200,200,150,i*30*Math.PI/180,(i+1)*30*Math.PI/180);
+                ctx.stroke();
+                ctx.closePath();
+            }
+            //画出一个半径130的圆覆盖
+            ctx.beginPath();
+            ctx.arc(200,200,130,0,2*Math.PI);
+            ctx.fillStyle = '#fff';
+            ctx.fill();
+            ctx.closePath();
+
+            var now = new Date();
+
+            var second = now.getSeconds();
+            var minute = now.getMinutes() + second/60;
+            var hour = now.getHours() + minute/60;
+            //画出时针并定义位置
+            ctx.beginPath();
+            ctx.moveTo(200,200);
+            ctx.arc(200,200,80,(hour*30-90)*Math.PI/180,(hour*30-90)*Math.PI/180);
+            ctx.stroke();
+            ctx.closePath();
+            //画出分针并定义位置
+            ctx.beginPath();
+            ctx.moveTo(200,200);
+            ctx.arc(200,200,100,(minute*6-90)*Math.PI/180,(minute*6-90)*Math.PI/180);
+            ctx.stroke();
+            ctx.closePath();
+            //画出秒针并定义位置
+            ctx.beginPath();
+            ctx.moveTo(200,200);
+            ctx.arc(200,200,150,(second*6-90)*Math.PI/180,(second*6-90)*Math.PI/180);
+            ctx.stroke();
+            ctx.closePath();
+        }
+        run();
+        setInterval(run, 1000);
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
